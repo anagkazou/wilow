@@ -32,9 +32,7 @@ export const Home = async (props: {
     <div className="relative flex min-h-screen flex-col items-center justify-center bg-gray-50 p-6 dark:bg-zinc-950">
 
       <div className="absolute top-0 left-0 w-full p-6 flex items-center justify-end">
-        <div className="absolute left-1/2 top-6 -translate-x-1/2">
-          <Image src="/logo.svg" alt="Wilow Logo" width={100} height={28} priority />
-        </div>
+
         <ThemeToggle />
       </div>
       <Dashboard dataPromise={dataPromise} filter={period} />

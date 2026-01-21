@@ -11,8 +11,12 @@ This project is a technical assessment demonstrating a performant, server-render
 
 ### **Data Fetching Strategy**
 - **Simulation API:** A Next.js Route Handler (`/api/ad-spend`) simulates a real backend with an artificial delay (1s) to demonstrate loading states.
-- **URL-Driven State:** Filter state (e.g., `?period=this_month`) is managed via URL Search Params. This ensures the dashboard is shareable and bookmarkable.
 - **Dynamic Fetching:** The `Home` page fetches data dynamically based on the URL params, passing the promise to the `Dashboard` component to handle resolution.
+
+### **State Management Strategy**
+- **URL as Source of Truth:** The application strictly uses **URL Search Parameters** (e.g., `?period=this_month`) to manage filter state, rather than local React state (useState) or global stores (Context/Redux).
+    - **Why?** This approach makes the dashboard **shareable** (copy-paste URL), **bookmarkable**, and ensures that the **Server Component** always receives the correct filter state immediately on the initial render.
+    - **Implementation:** The `ChartComponent` updates the router on selection, triggering a server re-render with the new params.
 
 ### **Component Reusability**
 - **`ChartComponent`:** A generic, reusable client component wrapper around `Recharts` that handles the rendering of the chart, tooltips, legends, and the filter UI.
